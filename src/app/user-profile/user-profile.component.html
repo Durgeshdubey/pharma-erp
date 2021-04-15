@@ -1,0 +1,70 @@
+
+<div class="card">
+  <div class="card-header card-header-info" style="padding:0%!important;background: #f44336;">
+      <h2 class="card-title" style="text-align: center;"><b>User Management</b></h2>
+  </div><br><br>
+  <div class="card-body">
+      <div class="row">
+          <div class="col-md-8">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search by User">
+      </mat-form-field>
+  </div>
+  <div class="col-md-4">
+      <div class="card-body table-responsive">
+          <button  mat-raised-button color="accent"class="saveBtn" (click)="addNewUser()">Add New User</button>
+      </div>
+  </div>
+  </div>
+  <div matSort *ngIf="!user_dataSource">
+      No Data Found
+</div>
+      <div class="mat-elevation-z8">
+        <mat-progress-bar style="margin: auto;" mode="indeterminate" *ngIf="!user_dataSource" ></mat-progress-bar>
+        <mat-table class="table-responsive" [dataSource]="user_dataSource" matSort>
+          <ng-container matColumnDef="MemberId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Member Id</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="MemberId :">{{row.MemberId}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="EmailId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Email ID</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="EmailId :">{{row.EmailId}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Modules">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Modules</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Modules :">{{row.Modules}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Categories">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Categories</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Categories :">{{row.Categories}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Company">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Company</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Company :">{{row.Company}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Country">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Country</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Country :">{{row.Country}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="edit">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
+            <mat-cell *matCellDef="let row" [style.color]="row.color" data-label="Edit :"><button mat-button color="primary"
+                (click)="edit(row)">
+                <mat-icon style="color:black">edit</mat-icon>
+              </button></mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
+            <mat-cell *matCellDef="let row" [style.color]="row.color" data-label="Delete :"><button mat-button color="primary"
+                (click)="delete(row)">
+          <mat-icon style="color:black;cursor: pointer;">delete_forever</mat-icon>
+        </button></mat-cell>
+      </ng-container>
+          <mat-header-row *matHeaderRowDef="userDisplayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: userDisplayedColumns;">
+          </mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[25, 50, 100, 200]"></mat-paginator>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div style="margin: auto">
+    Are you sure you want to delete <b>{{User}}</b>?<br><br>
+    <!-- <strong *ngIf="data.row.label"> Field "{{ data.row.label }}"?</strong> -->
+    <!-- <strong *ngIf="data.row.pos"> No "{{ data.row.pos }}"?</strong> <br /> -->
+    
+    <button mat-raised-button (click)="closeDialog()" >
+      Cancel
+    </button>
+    <button mat-raised-button style="margin-left: 70px"  color="warn" (click)="deleteRow(User)">
+      Delete
+    </button>
+  </div>
+  

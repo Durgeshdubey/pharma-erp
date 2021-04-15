@@ -1,0 +1,157 @@
+<ng-container *ngIf="rowdata.c_id; else elseTemplate">
+    <h3><b>Edit Clinic {{rowdata.clinic}}</b></h3>
+     <form ngNativeValidate #addForm="ngForm">
+     <div >
+         <div class="example-container">
+
+          <mat-form-field>
+            <input matInput placeholder="Enter ID" [(ngModel)]="rowdata.c_id" disabled required name="c_id">
+          </mat-form-field>
+
+           <mat-form-field>
+             <input matInput placeholder="Enter Name" [(ngModel)]="rowdata.c_name" required name="c_name">
+           </mat-form-field>
+         
+           <mat-form-field>
+            <input matInput placeholder="Enter phone"  [(ngModel)]="rowdata.c_phone" required name="c_phone" maxlength="10" minlength="10" pattern="[0-9]+">
+          </mat-form-field>
+    
+           <mat-form-field>
+             <input matInput placeholder="Enter address"  [(ngModel)]="rowdata.c_address" required name="c_address">
+           </mat-form-field>
+          
+           <mat-form-field>
+             <input matInput placeholder="Enter pincode"  [(ngModel)]="rowdata.c_pincode" required name="c_pincode" maxlength="6" minlength="6" pattern="[0-9]+">
+           </mat-form-field>
+ 
+           <mat-form-field>
+             <input matInput placeholder="Enter Email" [(ngModel)]="rowdata.c_email_id"  disabled
+            name="email" >
+           </mat-form-field>
+ 
+           <mat-form-field>
+            <input matInput placeholder="Enter Doctors Name" [(ngModel)]="rowdata.c_doctor_name"  name="doctor_name" >
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type ="time" matInput placeholder="Enter timings" [(ngModel)]="rowdata.c_timings"  
+           name="timings" >
+          </mat-form-field>
+
+           <!-- <mat-form-field>
+               <mat-select
+                 placeholder="Select Gender"
+                 id="gender"
+                 name="gender"
+                 [(value)]="rowdata.gender"
+                 required
+               >
+                 <mat-option value="Male"> Male </mat-option>
+                 <mat-option value="Female"> Female </mat-option>
+               </mat-select>
+             </mat-form-field> -->
+         
+         
+         
+           <!-- <mat-form-field >
+             <mat-select placeholder="Role" (selectionChange)="setRoleId(rowdata.role_id)" name="role" [(ngModel)]="rowdata.role_id" required> 
+               <mat-option *ngFor="let user of dataSource" [value]="user.role_id" >{{user.role_id}}</mat-option>
+             </mat-select>
+           </mat-form-field> -->
+         </div>
+         <mat-progress-bar mode="indeterminate" *ngIf="showprogress" ></mat-progress-bar>
+         <button  mat-raised-button  style="margin-left: 40%;"  (click)="close()">Close</button>
+           <button  mat-raised-button color="accent" [disabled]="addForm.invalid" class="saveBtn" (click)="update(rowdata)">Update</button>
+         </div>
+       </form>
+ </ng-container>
+ <ng-template #elseTemplate>
+     <h3><b>Add New Clinic</b></h3><br>
+     <!-- <mat-progress-bar mode="indeterminate" *ngIf="showprogress"></mat-progress-bar> -->
+     <div >
+     <form ngNativeValidate #addForm="ngForm">
+ 
+     <div class = "example-container">
+ 
+         <mat-form-field>
+             <input matInput placeholder="Enter Clinic ID"  [(ngModel)]="c_id" required name="c_id" pattern="[0-9]+">
+           </mat-form-field>
+ 
+       <mat-form-field>
+         <input matInput placeholder="Enter Clinic Name"  [(ngModel)]="c_name" required name="c_name">
+       </mat-form-field>
+       
+       <mat-form-field>
+        <input matInput placeholder="Enter Clinic phone"  [(ngModel)]="c_phone" required name="c_phone" maxlength="10" minlength="10" pattern="[0-9]+">
+      </mat-form-field>
+
+       <mat-form-field>
+         <input matInput placeholder="Enter Clinic address"  [(ngModel)]="c_address" required name="c_address">
+       </mat-form-field>
+ 
+       <mat-form-field>
+         <input matInput placeholder="Enter Clinic Pincode"  [(ngModel)]="c_pincode" required name="c_pincode" maxlength="6" minlength="6" pattern="[0-9]+">
+       </mat-form-field>
+      
+       <mat-form-field>
+         <input matInput placeholder="Enter Clinic Email" [(ngModel)]="c_email_id" name="c_email_id"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+         
+       </mat-form-field>
+       
+       <!-- <mat-form-field>
+           <input matInput placeholder="Enter Your Password" type="password" name="password" [(ngModel)]="password" required>
+         </mat-form-field> -->
+ 
+         <mat-form-field>
+             <input matInput placeholder="Enter Createdby_Userid"  [(ngModel)]="createdby_user_id" required name="createdby_user_id">
+           </mat-form-field>
+ 
+           <mat-form-field>
+            <input type="time" matInput placeholder="Enter Timings"  [(ngModel)]="c_timings" required name="timings">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Enter Doctor name"  [(ngModel)]="c_doctor_name" required name="doctorname">
+          </mat-form-field>
+         <!-- <mat-form-field>
+             <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="password" required>
+             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+           </mat-form-field> -->
+ 
+       <!-- <mat-form-field>
+         <input matInput placeholder="Enter Your Number" type="number" name="phone" [(ngModel)]="number" required>
+       </mat-form-field> -->
+       
+ 
+       
+       <!-- <mat-form-field>
+           <mat-select
+             placeholder="Select Gender"
+             id="gender"
+             name="gender"
+             [(value)]="gender1"
+             required
+           >
+             <mat-option value="Male"> Male </mat-option>
+             <mat-option value="Female"> Female </mat-option>
+           </mat-select>
+         </mat-form-field>
+      -->
+     
+         
+       <!-- <mat-form-field >
+         <mat-select placeholder="Role" (selectionChange)="setRoleId(role_id)"  [(ngModel)]="role_id" name="role" required> 
+           <mat-option *ngFor="let user of dataSource" [value]="user.role_id" >{{user.role_id}}</mat-option>
+         </mat-select>
+       </mat-form-field> -->
+     
+     </div>
+     <mat-progress-bar mode="indeterminate" *ngIf="showprogress"></mat-progress-bar>
+     <button mat-raised-button  style="margin-left: 40%;" (click)="close()">Close</button>
+     <button type="submit"  [disabled]="addForm.invalid"  mat-raised-button class="saveBtn" (click)="save()" > Save</button>
+     
+   </form>  
+   </div>
+ 
+ </ng-template>
+ 

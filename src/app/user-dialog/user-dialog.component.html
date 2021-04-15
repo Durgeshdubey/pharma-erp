@@ -1,0 +1,86 @@
+<div class="card">
+  <div class="card-header card-header-info" style="padding:0%!important;">
+      <h2 class="card-title" style="text-align: center;"><b>Add User</b></h2>
+  </div><br><br>
+  <div class="card-body table-responsive">
+      <div class="container" class="Login">
+          <div id="item-row" class="row justify-content-center align-items-center">
+              <div id="item-column" class="col-md-11">
+                  <div id="item-box" class="col-md-12">
+                      <form id="user-form" [formGroup]="userForm" class="form" action="" method="post">
+                        <mat-form-field hintLabel="Max 100 characters" appearance="">
+                          <mat-label>Member Id</mat-label>
+                          <input matInput type="text" formControlName="MemberId" name="MemberId" id="MemberId" #input maxlength="100"/> 
+                      </mat-form-field>
+                      <div *ngIf="userForm.get('MemberId').errors && (userForm.get('MemberId').dirty || userForm.get('MemberId').touched)">
+                          <mat-error *ngIf="userForm.get('MemberId').errors.required">Member Id is required</mat-error>
+                        </div>
+                      <mat-form-field style="padding-top: 2%;" hintLabel="Max 250 characters" appearance="">
+                          <mat-label>Email ID</mat-label>
+                          <input matInput type="email" formControlName="EmailId" name="EmailId" id="EmailId" #input maxlength="250"/>
+                      </mat-form-field>
+                      <div *ngIf="userForm.get('EmailId').errors && (userForm.get('EmailId').dirty || userForm.get('EmailId').touched)">
+                          <mat-error *ngIf="userForm.get('EmailId').errors.required">Email Id is required</mat-error>
+                        </div>
+                      <mat-form-field style="padding-top: 2%;" hintLabel="Max 10 characters" appearance="">
+                          <mat-label>Password</mat-label>
+                          <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password" name="Password" id="Password" #input maxlength="10" />
+                          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </mat-form-field>
+                      <div *ngIf="userForm.get('Password').errors && (userForm.get('Password').dirty || userForm.get('Password').touched)">
+                          <mat-error *ngIf="userForm.get('Password').errors.required">Password is required</mat-error>
+                        </div>
+                        <mat-form-field style="padding-top: 2%;" hintLabel="Select the option" appearance="">
+                          <mat-label>Role</mat-label>
+                          <mat-select matNativeControl formControlName="Role"  name="Role" id="Role">
+                            <mat-option value="internal">Internal | Team Member</mat-option>
+                            <mat-option value="external">External | Customer</mat-option>
+                            <!-- <mat-option value="manager">Manager</mat-option> -->
+                          </mat-select>
+                      </mat-form-field>
+                      <div *ngIf="userForm.get('Role').errors && (userForm.get('Role').dirty || userForm.get('Role').touched)">
+                          <mat-error *ngIf="userForm.get('Role').errors.required">Role is required</mat-error>
+                        </div>
+                        
+                          <!-- Dummy FORM with functions -->
+
+                        <mat-form-field hintLabel="Max 100 characters" appearance="">
+                          <mat-label>Modules</mat-label>
+                          <input matInput type="text" formControlName="Modules" name="Modules" id="Modules" #input maxlength="100"/>
+                          <button type="button"  class="btn btn-sm btn-info"  matSuffix (click)="fetchModules()">Select</button>
+                      </mat-form-field>
+                      <div *ngIf="userForm.get('Modules').errors && (userForm.get('Modules').dirty || userForm.get('Modules').touched)">
+                        <mat-error *ngIf="userForm.get('Modules').errors.required">Modules is required</mat-error>
+                      </div>
+                        <mat-form-field hintLabel="Max 100 characters" appearance="">
+                          <mat-label>Country</mat-label>
+                          <input matInput type="text" formControlName="Country" name="Country" id="Country" #input maxlength="100"/>
+                          <button type="button"  class="btn btn-sm btn-info"  matSuffix (click)="fetchCountry()">Select</button>
+                      </mat-form-field>
+                      <div *ngIf="userForm.get('Country').errors && (userForm.get('Country').dirty || userForm.get('Country').touched)">
+                        <mat-error *ngIf="userForm.get('Country').errors.required">Country is required</mat-error>
+                      </div>
+                      <mat-form-field hintLabel="Max 100 characters" appearance="">
+                        <mat-label>Company</mat-label>
+                        <input matInput type="text" formControlName="Company" name="Company" id="Company" #input maxlength="100"/>
+                        <button type="button"  class="btn btn-sm btn-info"  matSuffix (click)="fetchCompany()">Select</button>
+                    </mat-form-field>
+                    <div *ngIf="userForm.get('Company').errors && (userForm.get('Company').dirty || userForm.get('Company').touched)">
+                      <mat-error *ngIf="userForm.get('Company').errors.required">Company is required</mat-error>
+                    </div>
+
+
+
+                <div class="row container mt-4" style="justify-content: space-between;">
+                    <button type="submit" [disabled]="!userForm.valid" style="margin-top: 2%;"
+                                class="btn btn-success" (click)="addUser()">ADD</button>
+                    <button type="button" style="margin-top: 2%;"
+                                class="btn btn-danger text-right" (click)="close()">Close</button>
+                            </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

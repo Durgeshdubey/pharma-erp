@@ -1,0 +1,45 @@
+<div class="card" style="width: 50%;margin: 20%;margin-top: 10%" >
+    <div class="card-header card-header-warning" style="padding:0%!important;">
+        <h2 class="card-title" style="text-align: center;"><b></b>Login</h2>
+       <h5 style="text-align: center;"> </h5>
+    </div><br><br>
+    <mat-progress-bar style="margin-top: -48px;" mode="indeterminate" *ngIf="LoginUSer"></mat-progress-bar>
+    <div class="card-body table-responsive">
+            <div class="container" class="Login">
+                    <div id="login-row" class="row justify-content-center align-items-center">
+                        <div id="login-column" class="col-md-9">
+                            <div id="login-box" class="col-md-12">
+                                <form id="login-form" class="form" action="" method="post">
+                                    <!-- <h3 class="text-center text-info">Login</h3> -->
+                                   
+                                            <mat-form-field>
+                                      <input matInput type="email" placeholder="Enter your Email-id" name="email" id="email"  [(ngModel)]="email_id" class="form-control">
+                                    </mat-form-field>
+                                   
+                                    <!-- <div class="form-group">
+                                        <label for="password" class="text-info">Password:</label><br>
+                                        <input type="password" name="password" id="password" class="form-control" [(ngModel)]="password">
+                                    </div>
+                                   -->
+                                    <!-- <mat-form-field>
+                                            <input matInput type="text" name="username" id="username" [(ngModel)]="name" class="form-control" required>
+                                          
+                                          </mat-form-field> -->
+                                 
+                                            <mat-form-field>
+                                              <input matInput placeholder="Enter your Password" [type]="hide ? 'password' : 'text'" name="password" id="password" class="form-control" [(ngModel)]="password">
+                                              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                            </mat-form-field>
+                                          
+                                    
+                                    <button type="submit" style="width:100%;background: #999999;color: black; font-weight: 900" class="btn btn-primary" (click)="redirect()">Login</button>
+                                   
+                                    <!-- <button mat-button color="primary" >Primary</button> -->
+                                   
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+</div>

@@ -1,0 +1,126 @@
+<div class="logo">
+    <a  class="simple-text">
+        <div class="logo-img">
+            <img src="/assets/img/trans.png"/>
+        </div>
+         Admin
+    </a>
+</div>
+<div class="sidebar-wrapper">
+  <div *ngIf="isMobileMenu()">
+    <form class="navbar-form">
+      <span class="bmd-form-group">
+        <div class="input-group no-border">
+          <input type="text" value="" class="form-control" placeholder="Search...">
+          <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+            <i class="material-icons">search</i>
+            <div class="ripple-container"></div>
+          </button>
+        </div>
+      </span>
+    </form>
+    
+    <ul class="nav navbar-nav nav-mobile-menu">
+        <li class="nav-item">
+            <a class="nav-link" href="#pablo">
+                <i class="material-icons">dashboard</i>
+                <p>
+                    <span class="d-lg-none d-md-block">Stats</span>
+                </p>
+            </a>
+        </li>
+    </ul>
+  </div>
+  
+
+
+  <ul class="nav">
+   
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems " class="{{menuItem.class}} nav-item" >
+          
+           <ng-container *ngIf="menuItem.children && menuItem.children.length > 0">
+  
+              <ul class="nav"> 
+
+                <li routerLinkActive="active"  class="{{menuItem.class}} nav-item">
+                  <a class="nav-link" routerLink="/user-profile">
+                    <i class="material-icons">person</i>
+                    <p>User Management</p>
+                   </a>
+                </li>
+                <li  routerLinkActive="active"  class="{{menuItem.class}} nav-item">
+                  <a class="nav-link" routerLink="/customer-management">
+                    <i class="material-icons">bubble_chart</i>
+                    <p>Customer Management</p>
+                   </a>
+                </li>
+                <li  routerLinkActive="active"  class="{{menuItem.class}} nav-item">
+                  <a class="nav-link" routerLink="/product-management">
+                    <i class="material-icons">local_mall</i>
+                    <p>Product Management</p>
+                   </a>
+                </li>
+                <li  routerLinkActive="active"  class="{{menuItem.class}} nav-item">
+                  <a class="nav-link" routerLink="/warehouse-management">
+                    <i class="material-icons">store_icon</i>
+                    <p>WareHouse Management</p>
+                   </a>
+                </li>
+                <li  routerLinkActive="active"  class="{{menuItem.class}} nav-item">
+                  <a class="nav-link" routerLink="/invoice-management">
+                    <i class="material-icons">content_paste</i>
+                    <p>Invoice Management</p>
+                   </a>
+                </li>
+                <li routerLinkActive="active"  class="{{menuItem.class}} nav-item">
+                  <a class="nav-link" routerLink="/company-management">
+                    <i class="material-icons">business</i>
+                    <p>Company Management</p>
+                   </a>
+                </li>
+          
+
+                  <li  routerLinkActive="active" class="{{menuItem.class}} nav-item">
+                  <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header style="padding: 4px 7px 0px 0px;">
+                       <!-- <mat-panel-title> -->
+                      
+                         <a  class="{{menuItem.class}} nav-item" routerLink="/inventory-management">
+                           <i class="material-icons">inventory</i>
+                           <p>Inventory Management</p>
+                           </a> 
+                            
+                       <!-- </mat-panel-title> -->
+                       <!-- <mat-panel-description>
+                         Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                       </mat-panel-description> -->
+                     </mat-expansion-panel-header>
+                     <a id="1"  routerLinkActive="active" class="{{menuItem.class}} nav-item nav-link myanchor sunsetred" routerLink="/purchase-order">
+                       <i  class="material-icons">call_received</i>
+                       <p>Purchase Order</p>
+                       <!-- <p>I'm visible because I am open</p> -->
+                      </a>
+                      <a id="2"  routerLinkActive="active" class="nav-link" routerLink="/sales-order">
+                       <i class="material-icons">call_made</i>
+                       <p>Sales Order</p>
+                      </a>
+
+                      <a id="3"  routerLinkActive="active" class="nav-link" routerLink="/stock-balance">
+                        <i class="material-icons">account_balance</i>
+                        <p>Stock Balance</p>
+                       </a>
+                       <a id="4"  routerLinkActive="active" class="nav-link" routerLink="/stock-ledger">
+                        <i class="material-icons">auto_stories</i>
+                        <p>Stock Ledger</p>
+                       </a>
+                    
+                   </mat-expansion-panel>
+                 </mat-accordion>
+
+                </li>
+                </ul>
+           </ng-container>  
+        </li>
+  </ul>

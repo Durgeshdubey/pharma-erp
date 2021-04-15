@@ -1,0 +1,137 @@
+<div *ngIf="attendance; else:mapdata">
+
+    <div class="row">
+      <div class="col-sm-10">
+          <span style="white-space:nowrap">
+  
+              <label for="id1" style="color:black;font-size: 15px"><b>Name:-</b>{{this.details.el.name}}</label>
+            
+          </span>
+      </div>
+       <div class="col-sm-2">
+         
+          <button mat-button color="primary" (click)="close()"><i class="material-icons" >
+              clear 
+              </i></button>
+       </div>
+       
+     
+     </div>
+    <agm-map  [zoom]="8"  [latitude]="punch_in_lat" [longitude]="punch_in_lng" >
+        <agm-polyline>
+            <agm-polyline-point
+            
+              [latitude]="punch_in_lat"
+              [longitude]="punch_in_lng"
+            ></agm-polyline-point>
+          </agm-polyline>
+        <agm-marker [latitude]="punch_in_lat" [longitude]="punch_in_lng">
+          <agm-snazzy-info-window
+          maxWidth="20"
+         maxHeight="20"
+          [closeWhenOthersOpen]="true"
+      
+        >
+          <ng-template>
+            
+                <mat-card >
+                  <label style="color:black">Punch In Time:-{{puch_in_time}}</label>
+                  <!-- <label>Punch In:-{{puch_out_time}}</label> -->
+                </mat-card>
+            
+        
+          </ng-template>
+        </agm-snazzy-info-window>
+        </agm-marker>
+        <agm-marker *ngIf="punch_out_lat==0 ? false : true" [latitude]="punch_out_lat" [longitude]="punch_out_lng">
+          <agm-snazzy-info-window
+          [maxWidth]="300"
+         [maxHeight]="230"
+          [closeWhenOthersOpen]="true"
+        >
+        <ng-template>
+            
+          <mat-card >
+            <label style="color:black">Punch Out Time:-{{punch_out_time}}</label>
+            <!-- <label>Punch In:-{{puch_out_time}}</label> -->
+          </mat-card>
+      
+  
+    </ng-template>
+      <!-- </agm-snazzy-info-window> -->
+        </agm-snazzy-info-window>
+        </agm-marker>
+       
+     
+      </agm-map>
+
+      <div>
+            <!-- <p>
+                  Punch In Time={{puch_in_time}}
+               </p>
+               <p>
+                  Punch In Time={{punch_out_time}}
+               </p> -->
+               <span style="white-space:nowrap">
+
+                     <label for="id1" style="color:black;font-size: 15px"><b>Punch In Time:-</b>{{puch_in_time}}</label>
+                   
+                 </span>
+                 <span style="white-space:nowrap">
+                     <label for="id1" *ngIf="punch_out_lat == 0 ? false  : true" style="color:black;font-size: 15px;margin-left: 5%"><b>Punch Out Time:-</b>{{punch_out_time}}</label>
+                    
+                 </span>
+      </div>
+   
+      
+</div>
+<ng-template style="width:100%;" #mapdata>
+   <div class="row">
+     <div class="col-sm-10">
+        <span style="white-space:nowrap">
+
+            <label for="id1" style="color:black;font-size: 15px"><b>Report Submited by:-</b>{{Username}}</label>
+          
+        </span>
+        <span style="white-space:nowrap">
+            <label for="id1" style="color:black;font-size: 15px;margin-left: 5%"><b>Date:-</b>{{Userdate}}</label>
+           
+        </span>
+     </div>
+     <div class="col-sm-2">
+        <button mat-button color="primary" style="margin-left:20%" (click)="close()">   <i class="material-icons" >
+            clear
+            </i></button>
+     </div>  
+   </div>
+   
+    <agm-map [zoom]="15"  [latitude]="lat" [longitude]="lng">
+        <agm-polyline>
+            <agm-polyline-point
+            
+              [latitude]="lat"
+              [longitude]="lng"
+            ></agm-polyline-point>
+          </agm-polyline>
+       <agm-marker [latitude]="lat" [longitude]="lng">
+          <agm-snazzy-info-window
+          maxWidth="20"
+         maxHeight="20"
+          [closeWhenOthersOpen]="true"
+      
+        >
+          <ng-template>
+            
+                <mat-card >
+                  <label style="color:black">Report Time:-{{Userdate}}</label>
+                  <!-- <label>Punch In:-{{puch_out_time}}</label> -->
+                </mat-card>
+            
+        
+          </ng-template>
+        </agm-snazzy-info-window>  
+       </agm-marker>
+      
+    
+     </agm-map>
+  </ng-template>  

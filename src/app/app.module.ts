@@ -77,7 +77,7 @@ import { CommonCompanyListComponent } from './common-company-list/common-company
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    AgmCoreModule.forRoot({apiKey: 'AIzaSyAD58QNK2GNc23X8GkJBosVkckM2oxur-E'}),
+    AgmCoreModule.forRoot({apiKey: ''}),
     MatGoogleMapsAutocompleteModule,
     AgmCoreModule.forRoot(),
   ],

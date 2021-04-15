@@ -71,7 +71,7 @@ import { StockLedgerComponent } from '../../stock-ledger/stock-ledger.component'
     MatInputModule,
     ScrollDispatchModule,
     MatSelectModule,
-    AgmCoreModule.forRoot({apiKey: 'AIzaSyAD58QNK2GNc23X8GkJBosVkckM2oxur-E'}),
+    AgmCoreModule.forRoot({apiKey: ''}),
     MatTableModule,
     MatSnackBarModule,
     MatTooltipModule,

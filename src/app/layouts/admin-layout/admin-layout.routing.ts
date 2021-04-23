@@ -16,6 +16,10 @@ import { PurchaseOrderComponent } from '../../purchase-order/purchase-order.comp
 import { SalesOrderComponent } from '../../sales-order/sales-order.component';
 import { StockBalanceComponent } from '../../stock-balance/stock-balance.component';
 import { StockLedgerComponent } from '../../stock-ledger/stock-ledger.component';
+import { AddNewCustomerComponent } from '../../add-new-customer/add-new-customer.component'
+import { Component } from '@angular/core';
+import { AddNewProductComponent } from 'app/add-new-product/add-new-product.component';
+import { AddNewCategoryComponent } from 'app/add-new-category/add-new-category.component';
 //import { MapsComponent } from '../../maps/maps.component';
 
 //import { patch } from 'webdriver-js-extender';
@@ -67,7 +71,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'category-management', component: CategoryManagementComponent},
     { path: 'customer-management' , component:CustomerManagementComponent},
-    {path: 'product-management', component:ProductManagementComponent},
+    { path: 'product-management', component:ProductManagementComponent},
     { path: 'user-profile',   component: UserProfileComponent },
     { path:'invoice-management', component:InvoiceManagementComponent},
     { path:'warehouse-management', component:WarehouseManagementComponent}, 
@@ -80,6 +84,9 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'report',     component: ReportComponent },
     { path: 'location',     component: locationComponent },
     { path: 'clinic',          component: ClinicComponent },
+    { path:'add-customer', component:AddNewCustomerComponent},
+    { path:'add-new-product',component:AddNewProductComponent},
+    { path:'add-new-category',component:AddNewCategoryComponent},
     // { path: 'maps',           component: MapsComponent },
     // { path: 'notifications',  component: NotificationsComponent },
     // { path: 'upgrade',        component: UpgradeComponent },

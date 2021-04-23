@@ -41,8 +41,6 @@ import {
   MatSelectModule,
   MatMenuModule,
 
-
-
 } from '@angular/material';
 import {MatExpansionModule} from '@angular/material/expansion'
 import { ClinicDialogComponent } from 'app/clinic-dialog/clinic-dialog.component';
@@ -57,6 +55,9 @@ import { PurchaseOrderComponent } from '../../purchase-order/purchase-order.comp
 import { SalesOrderComponent } from '../../sales-order/sales-order.component';
 import { StockBalanceComponent } from '../../stock-balance/stock-balance.component';
 import { StockLedgerComponent } from '../../stock-ledger/stock-ledger.component';
+import { AddNewCustomerComponent } from '../../add-new-customer/add-new-customer.component';
+import { AddNewProductComponent } from '../../add-new-product/add-new-product.component';
+import { AddNewCategoryComponent } from '../../add-new-category/add-new-category.component';
 
 @NgModule({
   imports: [
@@ -97,7 +98,10 @@ import { StockLedgerComponent } from '../../stock-ledger/stock-ledger.component'
     UserDialogComponent,
     ReportComponent,
     locationComponent,
+    AddNewCustomerComponent,
+    AddNewProductComponent,
     AutocompleteComponent,
+    AddNewCategoryComponent,
    // ConfigComponent,
    // MapsComponent,
     // LoginComponent,

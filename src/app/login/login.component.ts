@@ -47,7 +47,11 @@ export class LoginComponent implements OnInit {
   redirect(){
     this.router.navigateByUrl('/user-profile');
   }
+  bypass(){
+    this.router.navigateByUrl('/user-profile');
+  }
   
+
  //Login
  login(){
 
@@ -84,9 +88,8 @@ export class LoginComponent implements OnInit {
        this.ngOnInit()
 
       }
-
-
-    //  localStorage.setItem(response.email,response.password)
+      
+  //  localStorage.setItem(response.email,response.password)
 
     },
     )

@@ -42,6 +42,9 @@ import { from } from 'rxjs';
 import { CommonCountryListComponent } from './common-country-list/common-country-list.component';
 import { CommonCompanyListComponent } from './common-company-list/common-company-list.component';
 
+// import { AddNewProductComponent } from './add-new-product/add-new-product.component';
+// import { AddNewCustomerComponent } from './add-new-customer/add-new-customer.component';
+
 
 
 
@@ -90,6 +93,9 @@ import { CommonCompanyListComponent } from './common-company-list/common-company
     LoginComponent,
   CommonCountryListComponent,
   CommonCompanyListComponent,
+
+ 
+  // AddNewCustomerComponent,
  // ConformationDialogCComponent,
  // ClinicComponent,
  // ClinicDialogComponent,

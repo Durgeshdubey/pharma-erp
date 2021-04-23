@@ -1,26 +1,79 @@
-<p>customer-management works!</p>
-<mat-accordion>
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          This is the expansion title
-        </mat-panel-title>
-        <mat-panel-description>
-          This is a summary of the content
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>This is the primary content of the panel.</p>
-    </mat-expansion-panel>
-    <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Self aware panel
-        </mat-panel-title>
-        <mat-panel-description>
-          Currently I am {{panelOpenState ? 'open' : 'closed'}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
-    </mat-expansion-panel>
-  </mat-accordion>
+
+<div class="card">
+  <div class="card-header card-header-info" style="padding:0%!important;background: #f44336;">
+      <h2 class="card-title" style="text-align: center;"><b>Customer Management</b></h2>
+  </div><br><br>
+  <div class="card-body">
+      <div class="row">
+          <div class="col-md-8">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+      </mat-form-field>
+  </div>
+  <div class="col-md-4">
+      <div class="card-body table-responsive">
+          <button  mat-raised-button color="accent"class="saveBtn" (click)="addNewCustomer()">Add New Customer</button>
+      </div>
+  </div>
+  </div>
+  <div matSort *ngIf="!customer_dataSource">
+      No Data Found
+</div>
+
+      <div class="mat-elevation-z8">
+        <mat-progress-bar style="margin: auto;" mode="indeterminate" *ngIf="!customer_dataSource" ></mat-progress-bar>
+        <mat-table class="table-responsive" [dataSource]="customer_dataSource" matSort>
+          <ng-container matColumnDef="CustomerId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Customer Id</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="CustomerId :">{{row.CustomerId}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Product">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Product</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Product :">{{row.Product}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Quantity">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Quantity :">{{row.Quantity}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Rates">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Rates</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Rates :">{{row.Rates}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Shipping">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Shipping</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Shipping :">{{row.Shipping}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Total_Invoice_Value">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Total Invoice Value</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Total_Invoice_Value :">{{row.Total_Invoice_Value}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Sales_Invoice_Number">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Sales Invoice Number</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Sales_Invoice_Number :">{{row.Sales_Invoice_Number}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Link">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Link</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Link :">{{row.Link}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="edit">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
+            <mat-cell *matCellDef="let row" [style.color]="row.color" data-label="Edit :"><button mat-button color="primary"
+                (click)="edit(row)">
+                <mat-icon style="color:black">edit</mat-icon>
+              </button></mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
+            <mat-cell *matCellDef="let row" [style.color]="row.color" data-label="Delete :"><button mat-button color="primary"
+                (click)="delete(row)">
+          <mat-icon style="color:black;cursor: pointer;">delete_forever</mat-icon>
+        </button></mat-cell>
+      </ng-container>
+          <mat-header-row *matHeaderRowDef="CustomerDisplayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: CustomerDisplayedColumns;">
+          </mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[25, 50, 100, 200]"></mat-paginator>
+      </div>
+    </div>
+</div>

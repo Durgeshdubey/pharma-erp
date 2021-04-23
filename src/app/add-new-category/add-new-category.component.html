@@ -1,0 +1,101 @@
+<div class="card">
+    <div class="card-header card-header-info" style="padding:0%!important;">
+        <h2 class="card-title" style="text-align: center;"><b>Add Category</b></h2>
+    </div><br><br>
+    <div class="card-body table-responsive">
+        <div class="container" class="Login">
+            <div id="item-row" class="row justify-content-center align-items-center">
+                <div id="item-column" class="col-md-11">
+                    <div id="item-box" class="col-md-12">
+                        <form id="Category-form" [formGroup]="categoryForm" class="form" action="" method="post">
+                            <mat-form-field hintLabel="Max 100 characters" appearance="">
+                                <mat-label>Category name</mat-label>
+                                <input matInput type="text" formControlName="Category_name" name="Category_name" id="Category_name" #input maxlength="100"/> 
+                                <!-- <button type="button" class="btn btn-sm btn-info" matSuffix
+                                    (click)="fetchWarehouse()">Select</button> -->
+                            </mat-form-field>
+                            <div
+                                *ngIf="categoryForm.get('Category_name').errors && (categoryForm.get('Category_name').dirty || categoryForm.get('Category_name').touched)">
+                                <mat-error *ngIf="categoryForm.get('Category_name').errors.required">Warehouse is required
+                                </mat-error>
+                            </div>
+
+                            <mat-form-field   formControlName="Category_id" hintLabel="Max 100 characters" appearance="">
+                                <mat-label>Category id</mat-label>
+                                <input matInput formControlName="Category_id"  name="Category_id" id="Category_id" #input maxlength="100" />
+                                <!-- <button type="button" class="btn btn-sm btn-info" (click)="fileInput.click()">
+                                    <span>Select</span>
+                                    <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
+                                  </button> -->
+                            </mat-form-field>
+                            <div
+                                *ngIf="categoryForm.get('Category_id').errors && (categoryForm.get('Category_id').dirty || categoryForm.get('Category_id').touched)">
+                                <mat-error *ngIf="categoryForm.get('Category_id').errors.required">Customer Id is
+                                    required</mat-error>
+                            </div>
+
+ 
+                            <!-- <mat-form-field hintLabel="Max 100 characters" appearance="">
+                                <mat-label>Product Origin</mat-label>
+                                <input matInput type="text" formControlName="Product_Origin" name="Product_Origin"
+                                    id="Product_Origin" #input maxlength="100" />
+                            </mat-form-field>
+                            <div
+                                *ngIf="categoryForm.get('Product_Origin').errors && (categoryForm.get('Product_Origin').dirty || categoryForm.get('Product_Origin').touched)">
+                                <mat-error *ngIf="categoryForm.get('Product_Origin').errors.required">Product Id is
+                                    required</mat-error>
+                            </div> -->
+
+
+                            <!-- <mat-form-field hintLabel="Max 100 characters" appearance="">
+                                <mat-label>Product Category</mat-label>
+                                <input matInput type="text" formControlName="Product_Category" name="Product_Category"
+                                    id="Product_Category" #input maxlength="100" />
+                            </mat-form-field>
+                            <div
+                                *ngIf="categoryForm.get('Product_Category').errors && (categoryForm.get('Product_Category').dirty || categoryForm.get('Product_Category').touched)">
+                                <mat-error *ngIf="categoryForm.get('Product_Category').errors.required">Contact Person is
+                                    required</mat-error>
+                            </div> -->
+
+                            
+                            <mat-form-field hintLabel="Max 100 characters" appearance="">
+                                <mat-label>Select Customer's </mat-label>
+                                <input matInput type="text" formControlName="Select_Users" name="Select_Users" id="Select_Users"
+                                    #input maxlength="100" />
+                                <button type="button" class="btn btn-sm btn-info" matSuffix
+                                    (click)="fetchCustomers()">Select</button>
+                            </mat-form-field>
+                            <div
+                                *ngIf="categoryForm.get('Select_Users').errors && (categoryForm.get('Select_Users').dirty || categoryForm.get('Select_Users').touched)">
+                                <mat-error *ngIf="categoryForm.get('Select_Users').errors.required">Customer's are required
+                                </mat-error>
+                            </div>
+
+                            <mat-form-field hintLabel="Max 100 characters" appearance="">
+                                <mat-label>Select Product's </mat-label>
+                                <input matInput type="text" formControlName="Select_Products" name="Select_Products" id="Select_Products"
+                                    #input maxlength="100" />
+                                <button type="button" class="btn btn-sm btn-info" matSuffix
+                                    (click)="fetchProducts()">Select</button>
+                            </mat-form-field>
+                            <div
+                                *ngIf="categoryForm.get('Select_Products').errors && (categoryForm.get('Select_Products').dirty || categoryForm.get('Select_Products').touched)">
+                                <mat-error *ngIf="categoryForm.get('Select_Products').errors.required">Product's are required
+                                </mat-error>
+                            </div>
+
+                            <div class="row container mt-4" style="justify-content: space-between;">
+                                <button type="submit" [disabled]="!categoryForm.valid" style="margin-top: 2%;"
+                                    class="btn btn-success" (click)="addUser()">ADD</button>
+                                <button type="button" style="margin-top: 2%;" class="btn btn-danger text-right"
+                                    (click)="close()">Close</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

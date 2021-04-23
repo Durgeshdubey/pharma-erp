@@ -1,0 +1,266 @@
+<div class="card">
+    <div class="card-header card-header-info" style="padding:0%!important;">
+        <h2 class="card-title" style="text-align: center;"><b>Add Customer</b></h2>
+    </div><br><br>
+    <div class="card-body table-responsive">
+        <div class="container" class="Login">
+            <div id="item-row" class="row justify-content-center align-items-center">
+                <div id="item-column" class="col-md-11">
+                    <div id="item-box" class="col-md-12">
+                        <form id="customer-form" [formGroup]="customerForm" class="form" action="" method="post">
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label>Customer Id</mat-label>
+                            <input matInput type="text" formControlName="CustomerId" name="CustomerId" id="CustomerId" #input maxlength="100"/> 
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('CustomerId').errors && (customerForm.get('CustomerId').dirty || customerForm.get('CustomerId').touched)">
+                            <mat-error *ngIf="customerForm.get('CustomerId').errors.required">Customer Id is required</mat-error>
+                          </div>
+
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label>Customer Name</mat-label>
+                            <input matInput type="text" formControlName="CustomerName" name="CustomerName" id="CustomerName" #input maxlength="100"/> 
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('CustomerName').errors && (customerForm.get('CustomerName').dirty || customerForm.get('CustomerName').touched)">
+                            <mat-error *ngIf="customerForm.get('CustomerName').errors.required">Customer Id is required</mat-error>
+                          </div>
+
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label>Product</mat-label>
+                            <input matInput type="text" formControlName="Product" name="Product" id="Product" #input maxlength="100"/>
+                            <button type="button"  class="btn btn-sm btn-info"  matSuffix (click)="tofetchproductlist()">Select</button>
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Product').errors && (customerForm.get('Product').dirty || customerForm.get('Product').touched)">
+                          <mat-error *ngIf="customerForm.get('Product').errors.required">Product is required</mat-error>
+                        </div>
+                          
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label>Contact person manager</mat-label>
+                            <input matInput type="text" formControlName="Contact_Person_Manager" name="Contact_Person_Manager" id="Contact_Person_Manager" #input maxlength="100"/> 
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Contact_Person_Manager').errors && (customerForm.get('Contact_Person_Manager').dirty || customerForm.get('Contact_Person_Manager').touched)">
+                            <mat-error *ngIf="customerForm.get('Contact_Person_Manager').errors.required">Contact Person is required</mat-error>
+                          </div>
+<!--                           
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label>Company Name</mat-label>
+                            <input matInput type="text" formControlName="Company_Name" name="Company_Name" id="Company_Name" #input maxlength="100"/> 
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Company_Name').errors && (customerForm.get('Company_Name').dirty || customerForm.get('Company_Name').touched)">
+                            <mat-error *ngIf="customerForm.get('Company_Name').errors.required">Company name is required</mat-error>
+                          </div> -->
+                          
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label>Mobile number</mat-label>
+                            <input matInput type="text" formControlName="MobileNo" name="MobileNo" id="MobileNo" #input maxlength="100"/> 
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('MobileNo').errors && (customerForm.get('MobileNo').dirty || customerForm.get('MobileNo').touched)">
+                            <mat-error *ngIf="customerForm.get('MobileNo').errors.required">Mobile Number required</mat-error>
+                          </div>
+                          
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label>Owner's Name & Details</mat-label>
+                            <input matInput type="text" formControlName="Owner_Name_Details" name="Owner_Name_Details" id="Owner_Name_Details" #input maxlength="100"/> 
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Owner_Name_Details').errors && (customerForm.get('Owner_Name_Details').dirty || customerForm.get('Owner_Name_Details').touched)">
+                            <mat-error *ngIf="customerForm.get('Owner_Name_Details').errors.required">Owner's details is required</mat-error>
+                          </div>
+                          
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label>Landline number</mat-label>
+                            <input matInput type="text" formControlName="LandlineNo" name="LandlineNo" id="LandlineNo" #input maxlength="100"/> 
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('LandlineNo').errors && (customerForm.get('LandlineNo').dirty || customerForm.get('LandlineNo').touched)">
+                            <mat-error *ngIf="customerForm.get('LandlineNo').errors.required">landline is required</mat-error>
+                          </div>
+                        
+                          <section class="container border mb-4 p-3 mt-4" formArrayName="Address" *ngFor="let Address of addressControls; let i = index;">
+                            <div [formGroupName]="i">
+                          <div class="row">
+                              <div class="col-6">
+                                  <h3>Address {{i + 1}}</h3>
+                              </div>
+                              <div class="col-6 text-right">
+                                  <button type="button" class="btn btn-danger btn-sm" (click)="removeAddress(i)">Remove</button>
+                              </div>
+                            </div>
+                        <mat-form-field style="padding-top: 2%;" hintLabel="Max 250 characters" appearance="">
+                          <mat-label>Customer Address</mat-label>
+                          <input matInput type="text"  formControlName="vendor_address" name="vendor_address" id="vendor_address" #input maxlength="250" placeholder="eg - mumbai"/>
+                          <mat-hint align="end">{{input.value?.length || 0}}/250</mat-hint>
+                      </mat-form-field>
+                      <!-- <div *ngIf="address.get('vendor_address').errors && (address.get('vendor_address').dirty || address.get('vendor_address').touched)">
+                          <mat-error *ngIf="address.get('vendor_address').errors.required">Subcontractor address is required</mat-error>
+                        </div> -->
+                      </div>
+                  </section>
+                  <div class="row container">
+                    <button type="button" class="btn btn-primary" (click)="addAddress()">Add Address</button>
+                </div>
+                      
+                          
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label>Website</mat-label>
+                            <input matInput type="text" formControlName="Website" name="Website" id="Website" #input maxlength="100"/> 
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Website').errors && (customerForm.get('Website').dirty || customerForm.get('Website').touched)">
+                            <mat-error *ngIf="customerForm.get('Website').errors.required">Customer Id is required</mat-error>
+                          </div>
+
+
+                          <mat-form-field style="padding-top: 2%;" hintLabel="Select the option" appearance="">
+                            <mat-label>Online / Offline Customer</mat-label>
+                         <mat-select matNativeControl formControlName="Role"  name="Role" id="Role">
+                              <mat-option value="">Online Customer</mat-option>
+                              <mat-option value="">Offline Customer</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Online_Offline_customer').errors && (customerForm.get('Online_Offline_customer').dirty || customerForm.get('Online_Offline_customer').touched)">
+                            <mat-error *ngIf="customerForm.get('Online_Offline_customer').errors.required">Role is required</mat-error>
+                          </div>
+
+                          <mat-form-field style="padding-top: 2%;" hintLabel="Select the option" appearance="">
+                            <mat-label>Customer Type</mat-label>
+                         <mat-select matNativeControl formControlName="Role"  name="Role" id="Role">
+                              <mat-option value="">Wholesaler</mat-option>
+                              <mat-option value="">Retailer</mat-option>
+                              <mat-option value="">Stockist</mat-option>
+                              <mat-option value="">Distributor</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Online_Offline_customer').errors && (customerForm.get('Online_Offline_customer').dirty || customerForm.get('Online_Offline_customer').touched)">
+                            <mat-error *ngIf="customerForm.get('Online_Offline_customer').errors.required">Role is required</mat-error>
+                          </div>
+                          
+
+                          <mat-form-field style="padding-top: 2%;" hintLabel="Select the option" appearance="">
+                            <mat-label>Active / Inactive Customer</mat-label>
+                         <mat-select matNativeControl formControlName="Role"  name="Role" id="Role">
+                              <mat-option value="active">Active</mat-option>
+                              <mat-option value="inactive">In Active</mat-option>
+                         
+                            </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Active_Inactive_customer').errors && (customerForm.get('Active_Inactive_customer').dirty || customerForm.get('Active_Inactive_customer').touched)">
+                            <mat-error *ngIf="customerForm.get('Active_Inactive_customer').errors.required">Role is required</mat-error>
+                          </div>
+
+
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label> Shipping </mat-label>
+                            <input matInput type="text" formControlName="Shipping" name="Shipping" id="Shipping" #input maxlength="100"/> 
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Shipping').errors && (customerForm.get('Shipping').dirty || customerForm.get('Shipping').touched)">
+                            <mat-error *ngIf="customerForm.get('Shipping').errors.required">Customer Id is required</mat-error>
+                          </div>
+                          
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label>Rates</mat-label>
+                            <input matInput type="text" formControlName="Rates" name="Rates" id="Rates" #input maxlength="100"/> 
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Rates').errors && (customerForm.get('Rates').dirty || customerForm.get('Rates').touched)">
+                            <mat-error *ngIf="customerForm.get('Rates').errors.required">Customer Id is required</mat-error>
+                          </div>
+                          
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label>Total Invoice Value</mat-label>
+                            <input matInput type="text" formControlName="Total_Invoice_Value" name="Total_Invoice_Value" id="Total_Invoice_Value" #input maxlength="100"/> 
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Total_Invoice_Value').errors && (customerForm.get('Total_Invoice_Value').dirty || customerForm.get('Total_Invoice_Value').touched)">
+                            <mat-error *ngIf="customerForm.get('Total_Invoice_Value').errors.required">Customer Id is required</mat-error>
+                          </div>
+
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label>Sales Invoice Number</mat-label>
+                            <input matInput type="text" formControlName="Sales_Invoice_Number" name="Sales_Invoice_Number" id="Sales_Invoice_Number" #input maxlength="100"/> 
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Sales_Invoice_Number').errors && (customerForm.get('Sales_Invoice_Number').dirty || customerForm.get('Sales_Invoice_Number').touched)">
+                            <mat-error *ngIf="customerForm.get('Sales_Invoice_Number').errors.required">Customer Id is required</mat-error>
+                          </div>
+
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label>Doing Business as</mat-label>
+                            <input matInput type="text" formControlName="Doing_Business_as" name="Doing_Business_as" id="Doing_Business_as" #input maxlength="100"/> 
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Doing_Business_as').errors && (customerForm.get('Doing_Business_as').dirty || customerForm.get('Doing_Business_as').touched)">
+                            <mat-error *ngIf="customerForm.get('Doing_Business_as').errors.required">Customer Id is required</mat-error>
+                          </div>
+                          
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label>Check Received</mat-label>
+                            <input matInput type="text" formControlName="Check_Received" name="Check_Received" id="Check_Received" #input maxlength="100"/> 
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Check_Received').errors && (customerForm.get('Check_Received').dirty || customerForm.get('Check_Received').touched)">
+                            <mat-error *ngIf="customerForm.get('Check_Received').errors.required">Customer Id is required</mat-error>
+                          </div>
+                          
+
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label> Link </mat-label>
+                            <input matInput type="text" formControlName="Link" name="Link" id="Link" #input maxlength="100"/> 
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Link').errors && (customerForm.get('Link').dirty || customerForm.get('Link').touched)">
+                            <mat-error *ngIf="customerForm.get('Link').errors.required">Customer Id is required</mat-error>
+                          </div>
+                          
+
+
+                        <mat-form-field style="padding-top: 2%;" hintLabel="Max 250 characters" appearance="">
+                            <mat-label>Email ID</mat-label>
+                            <input matInput type="email" formControlName="EmailId" name="EmailId" id="EmailId" #input maxlength="250"/>
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('EmailId').errors && (customerForm.get('EmailId').dirty || customerForm.get('EmailId').touched)">
+                            <mat-error *ngIf="customerForm.get('EmailId').errors.required">Email Id is required</mat-error>
+                          </div>
+                        <mat-form-field style="padding-top: 2%;" hintLabel="Max 10 characters" appearance="">
+                            <mat-label>Password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password" name="Password" id="Password" #input maxlength="10" />
+                            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Password').errors && (customerForm.get('Password').dirty || customerForm.get('Password').touched)">
+                            <mat-error *ngIf="customerForm.get('Password').errors.required">Password is required</mat-error>
+                          </div>
+                            
+                          
+                            <!-- Dummy FORM with functions  -->
+  
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label>Modules</mat-label>
+                            <input matInput type="text" formControlName="Modules" name="Modules" id="Modules" #input maxlength="100"/>
+                            <button type="button"  class="btn btn-sm btn-info"  matSuffix (click)="fetchModules()">Select</button>
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Modules').errors && (customerForm.get('Modules').dirty || customerForm.get('Modules').touched)">
+                          <mat-error *ngIf="customerForm.get('Modules').errors.required">Modules is required</mat-error>
+                        </div>
+                          <mat-form-field hintLabel="Max 100 characters" appearance="">
+                            <mat-label>Country</mat-label>
+                            <input matInput type="text" formControlName="Country" name="Country" id="Country" #input maxlength="100"/>
+                            <button type="button"  class="btn btn-sm btn-info"  matSuffix (click)="fetchCountry()">Select</button>
+                        </mat-form-field>
+                        <div *ngIf="customerForm.get('Country').errors && (customerForm.get('Country').dirty || customerForm.get('Country').touched)">
+                          <mat-error *ngIf="customerForm.get('Country').errors.required">Country is required</mat-error>
+                        </div>
+                        <mat-form-field hintLabel="Max 100 characters" appearance="">
+                          <mat-label>Company</mat-label>
+                          <input matInput type="text" formControlName="Company" name="Company" id="Company" #input maxlength="100"/>
+                          <button type="button"  class="btn btn-sm btn-info"  matSuffix (click)="fetchCompany()">Select</button>
+                      </mat-form-field>
+                      <div *ngIf="customerForm.get('Company').errors && (customerForm.get('Company').dirty || customerForm.get('Company').touched)">
+                        <mat-error *ngIf="customerForm.get('Company').errors.required">Company is required</mat-error>
+                      </div>
+  
+  
+  
+                  <div class="row container mt-4" style="justify-content: space-between;">
+                      <button type="submit" [disabled]="!customerForm.valid" style="margin-top: 2%;"
+                                  class="btn btn-success" (click)="addUser()">ADD</button>
+                      <button type="button" style="margin-top: 2%;"
+                                  class="btn btn-danger text-right" (click)="close()">Close</button>
+                              </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
